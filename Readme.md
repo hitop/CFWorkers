@@ -8,6 +8,11 @@
 
 ## 目前制作
 
+### CDN 加速下载 - download.js
+
+使用 cloudflare 的全球 CDN 加速下载文件。
+下载链接通过 Get 关键字 **durl** 传递： xxxxx.xxx.workers.dev/?durl=下载链接
+
 ### 单个网站 CDN 加速 - cdnhost.js
 
 注意替换 *url.hostname="raw.githubusercontent.com"* 这一行的内容，hostname 改为需要 CDN 加速的域名。
