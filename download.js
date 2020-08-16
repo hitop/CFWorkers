@@ -21,8 +21,7 @@ addEventListener(
  * @return {web Response}        请求结果
  */
 async function handleRequest(request) {
-  let url=new URL(request.url)
-  let durl=url.searchParams.get('durl')
+  let durl = request.url.split('durl=')[1]
 
   if (durl) {
     return fetch(decodeURI(durl))
@@ -30,20 +29,40 @@ async function handleRequest(request) {
 
   const init = {
     headers: {
-      'content-type': 'text/plain;charset=UTF-8',
+      'content-type': 'text/html;charset=UTF-8',
     },
   }
 
   let data = `
-    无下载链接，请添加 GET 参数 durl： 
-      xxxxx.xxxx.workers.dev/?durl=要下载的文件直链
-
-    without downloadurl, please make sure there is a "durl" GET parameter: 
-      xxxxx.xxxx.workers.dev/?durl=downloadurl
-
-    Tip: 如果下载链接比较复杂，建议先 encodeURI
-
-    反馈 issue： https://github.com/hitop/CFWorkers
+  <link rel="icon" href="https://www.cloudflare.com/favicon.ico">
+  <title>Speed Up Download</title>
+  <style>
+    body {background: #0047AB;}
+    .downwrap, .project {position: fixed;display: inline-flex;width: fit-content;max-width: 100%;left: 0;right: 0;margin: auto;}
+    .downurl {height: 42px;width: 600px;border-radius: 22px;outline: none;border: none;padding: 0 16px;font-size: 20px;color: #0047AB;}
+    .downwrap {top: 32%;flex-direction: column;justify-content: space-around;text-align: center;align-items: center;}
+    .project {bottom: 1em;color: white;}
+    .fullurl, .project {text-decoration: none;}
+    .fullurl {color: white;word-break: break-all;margin-top: 8px;max-width: 560px;max-height: 200px;overflow: auto;}
+  </style>
+  <body>
+    <div class="downwrap">
+      <input class="downurl" placeholder="download link 下载地址 <Enter>">
+      <a class="fullurl" href="" target="_blank"></a>
+    </div>
+    <a class="project" href="https://github.com/hitop/CFWorkers" target="_blank">https://github.com/hitop/CFWorkers</a>
+    <script>
+      document.addEventListener('keyup', (e) => {
+        const url = '/?durl=' + encodeURI(document.querySelector('.downurl').value)
+        if (e.key === 'Enter') {
+          window.open(url)
+        } else {
+          document.querySelector('.fullurl').innerText = url
+          document.querySelector('.fullurl').href = url
+        }
+      })
+    </script>
+  </body>
   `
 
   return new Response(data, init)
