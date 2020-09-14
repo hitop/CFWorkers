@@ -13,6 +13,8 @@
 使用 cloudflare 的全球 CDN 加速下载文件。
 下载链接通过 Get 关键字 **durl** 传递： xxxxx.xxx.workers.dev/?durl=下载链接
 
+demo: https://dl.ev2.workers.dev/
+
 ### 单个网站 CDN 加速 - cdnhost.js
 
 注意替换 *url.hostname="raw.githubusercontent.com"* 这一行的内容，hostname 改为需要 CDN 加速的域名。
@@ -21,13 +23,11 @@
 
 ### 斗鱼免登录订阅 - dysub.js
 
-demo - https://dysub.ev2.workers.dev/
+demo: https://dy.ev2.workers.dev/
 
 预览效果：
 
 ![斗鱼免登录订阅](https://i.loli.net/2020/04/28/fwALy8F5W7kHpuU.jpg)
-
-**roomList 可手动修改为其他感兴趣的主播房间号**
 
 ### 直接输出 Get 内容 - getShow.js
 

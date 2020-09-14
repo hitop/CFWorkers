@@ -37,7 +37,7 @@ async function handleRequest(request) {
   <link rel="icon" href="https://www.cloudflare.com/favicon.ico">
   <title>Speed Up Download</title>
   <style>
-    body {background: #0047AB;}
+    body {background: #82b64a;background-image: url(https://bing.ioliu.cn/v1/rand);}
     .downwrap, .project {position: fixed;display: inline-flex;width: fit-content;max-width: 100%;left: 0;right: 0;margin: auto;}
     .downurl {height: 42px;width: 600px;border-radius: 22px;outline: none;border: none;padding: 0 16px;font-size: 20px;color: #0047AB;}
     .downwrap {top: 32%;flex-direction: column;justify-content: space-around;text-align: center;align-items: center;}
